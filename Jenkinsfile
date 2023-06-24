@@ -27,7 +27,13 @@ pipeline {
                     sh "mvn clean"
                 }
             }
+        stage ("Creation du livrable"){
+			steps{
+				sh "mvn package -DskipTests=true"
+			}
+		}
         }
+
 	
         	
     }
