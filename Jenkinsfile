@@ -12,9 +12,9 @@ pipeline {
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "admin:admin123"
     }
-	
+
     stages {
-        stage ('GIT') {
+        stage('GIT') {
             steps {
                 echo "Getting Project from Git"
                 git branch: 'master', url: 'https://github.com/Bensmida98/JenkinsTest.git'
@@ -38,11 +38,11 @@ pipeline {
                 sh 'mvn package -DskipTests=true'
             }
         }
-	stage("Deploiement dans nexus ") {
-     		 steps{
-                          }
-  			sh "mvn deploy -DskipTests=true"
-                }    
-	    	    
-}
 
+        stage("Deploiement dans nexus ") {
+            steps {
+                sh "mvn deploy -DskipTests=true"
+            }
+        }
+    }
+}
